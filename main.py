@@ -1,10 +1,9 @@
 import os
-from flask import Flask, jsonify, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Boolean, func
-from datetime import date
 
 
 app = Flask(__name__)
@@ -61,6 +60,7 @@ def cafes():
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
+        # Get Cafe-Data from the Form
         cafe_name = request.form.get("name")
         cafe_map_url = request.form.get("map_url")
         cafe_img_url = request.form.get("img_url")
